@@ -31,7 +31,7 @@ import 'services/notifications/notifications_service.dart';
 import 'package:audio_session/audio_session.dart';
 
 late AudioPlayerNotifier audioHandler;
-
+// this is a testing commit
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: StringConstants.stagingEnv);
