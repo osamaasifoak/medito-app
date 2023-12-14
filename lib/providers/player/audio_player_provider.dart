@@ -74,10 +74,12 @@ class AudioPlayerNotifier extends BaseAudioHandler
     seekValueFromSlider(position.inMilliseconds);
   }
 
-  void initAudioHandler() {
-    trackAudioPlayer.playbackEventStream
-        .map(_transformEvent)
-        .pipe(playbackState);
+  void initAudioHandler() async {
+    if (await trackAudioPlayer.playbackEventStream.isEmpty) {
+      unawaited(trackAudioPlayer.playbackEventStream
+          .map(_transformEvent)
+          .pipe(playbackState));
+    }
   }
 
   void setBackgroundAudio(BackgroundSoundsModel sound) {
